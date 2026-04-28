@@ -132,11 +132,11 @@ processors:
       ignore_missing: true
       field: file.path
       pattern_definitions:
-        WINFILENAME: "[^\\\\]+"
-        POSIXFILENAME: "[^/]+"
+        FILENAME: '[^/]+'
+        WINFILENAME: '[^\\]+'
       patterns:
-      - "^(?:[A-Za-z]:\\\\|\\\\)(?:.*\\\\)?%{WINFILENAME:file.name}$"
-      - "^/(?:.*/)?%{POSIXFILENAME:file.name}$"
+      - '^(?:[A-Za-z]:\\|\\)(?:.*\\)?%{WINFILENAME:file.name}$'
+      - '^/(?:.*/)?%{FILENAME:file.name}$'
       tag: extract_file_name_from_path
   - rename:
       ignore_missing: true
